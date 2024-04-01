@@ -10,14 +10,15 @@ DL = {}  -- Table for this lib
 ---------------------------------------------------------------------------------
 -- Shows the provided message as info text (top center) if debug mode is enabled.
 -- pText: String ID in user_strings.res
--- pReplacement: Replacement string ID in user_strings.res
+-- pReplacement: Table of replacement string IDs in user_strings.res
 ---------------------------------------------------------------------------------
 DL.ShowMessage = function(pText, pReplacement)
 	if "true" == MissionLib.GetChapterState("DebugModeSwitchENABLE", 1) then
 		if (pReplacement ~= nil) then
 			NGUI.ShowInfoText({
 				Text = pText,
-				Replace = {pReplacement}})
+				Replace = pReplacement
+			})
 		else
 			NGUI.ShowInfoText({Text = pText})
 		end
